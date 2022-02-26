@@ -2,6 +2,14 @@
 
 A new Flutter project.
 
+## Setup project
+
+- create a firebase project and follow the instructions [here](https://firebase.flutter.dev/docs/manual-installation)
+
+## Run project
+
+- run the project by typing `flutter run` in the terminal of the project
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
