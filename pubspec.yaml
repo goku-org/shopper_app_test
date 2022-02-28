@@ -19,7 +19,6 @@ dependencies:
   routemaster: ^0.9.5
   bot_toast: ^4.0.1
   flutter_svg: ^1.0.3
-  get_it: ^7.2.0
   hive_flutter: ^1.1.0
   logging: ^1.0.2
   provider: ^6.0.2

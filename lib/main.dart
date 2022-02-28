@@ -14,7 +14,7 @@ void main() async {
   Config.firestore.settings = const Settings(persistenceEnabled: true);
   await Hive.initFlutter();
   await Hive.openBox(Config.localDB);
-  _setup();
+
   _setupLogging();
   runApp(const MyApp());
 }
@@ -26,7 +26,4 @@ void _setupLogging() {
   });
 }
 
-void _setup() {
-  final getIt = GetIt.instance;
-  getIt.registerSingleton<AuthRepositoryImpl>(AuthRepositoryImpl());
-}
+
