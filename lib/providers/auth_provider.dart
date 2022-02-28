@@ -1,17 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:shopper_app/repositories/auth_repository.dart';
 
 class AuthProvider with ChangeNotifier {
+  final AuthRepository authRepository;
+
   String _message = "";
-  final AuthRepository _authRepository = GetIt.instance<AuthRepositoryImpl>();
+
+  AuthProvider({required this.authRepository});
 
   String get message => _message;
 
-  User? get currentUser => _authRepository.getCurrentUser();
+  User? get currentUser => authRepository.getCurrentUser();
 
-  bool get isLoggedIn => _authRepository.isSignedIn();
+  bool get isLoggedIn => authRepository.isSignedIn();
 
   setMessage(String message) {
     _message = message;
@@ -20,7 +22,7 @@ class AuthProvider with ChangeNotifier {
 
   Future<bool> loginUser({required String email, required String password}) async {
     try {
-      final user = await _authRepository.signInWithEmailAndPassword(email, password);
+      final user = await authRepository.signInWithEmailAndPassword(email, password);
       if (user != null) {
         setMessage('Login Successful');
       } else {
@@ -34,13 +36,13 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<bool> logUserOut() async {
-    await _authRepository.signOut();
+    await authRepository.signOut();
     return true;
   }
 
   Future<bool> sendPasswordResetLink({required String email}) async {
     try {
-      await _authRepository.sendPasswordResetEmail(email);
+      await authRepository.sendPasswordResetEmail(email);
       setMessage('See your soon!');
       return true;
     } catch (e) {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:shopper_app/providers/auth_provider.dart';
+import 'package:shopper_app/repositories/auth_repository.dart';
 import 'package:shopper_app/resources/app_strings.dart';
 import 'package:shopper_app/resources/app_theme.dart';
 import 'package:shopper_app/routes.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthProvider>.value(value: AuthProvider()),
+        ChangeNotifierProvider<AuthProvider>.value(value: AuthProvider(authRepository: AuthRepositoryImpl())),
       ],
       child: MaterialApp.router(
         routerDelegate: RoutemasterDelegate(routesBuilder: (context) => routes),
