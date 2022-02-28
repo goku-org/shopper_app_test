@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart' as log;
 import 'package:shopper_app/app.dart';
 import 'package:shopper_app/config/config.dart';
-import 'package:shopper_app/repositories/auth_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,5 +23,3 @@ void _setupLogging() {
     debugPrint('${rec.level.name}: ${rec.time}: ${rec.message}');
   });
 }
-
-
